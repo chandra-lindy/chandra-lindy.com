@@ -9,9 +9,9 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-inconsolata)'],
+        sans: ['var(--font-merriweather-sans)'],
         mono: ['var(--font-inconsolata)'],
-        serif: ['var(--font-inconsolata)'],
+        serif: ['var(--font-merriweather-sans)'],
       },
     },
   },

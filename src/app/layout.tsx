@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Inconsolata } from "next/font/google";
+import { Inconsolata, Merriweather_Sans } from "next/font/google";
 import "./globals.css";
 
 const inconsolata = Inconsolata({
   variable: "--font-inconsolata",
   subsets: ["latin"],
   weight: ["400", "700"],
+});
+
+const merriweatherSans = Merriweather_Sans({
+  variable: "--font-merriweather-sans",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
 });
 
 export const metadata: Metadata = {
@@ -20,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inconsolata.variable} antialiased`}>{children}</body>
+      <body className={`${inconsolata.variable} ${merriweatherSans.variable} antialiased`}>{children}</body>
     </html>
   );
 }
