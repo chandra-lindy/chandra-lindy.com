@@ -100,12 +100,12 @@ export default function Navigation() {
       {/* Mobile menu, show/hide based on menu state */}
       {isMenuOpen && (
         <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className={`block px-3 py-2 rounded-md text-base font-medium
+                className={`block px-3 py-2 rounded-md text-base font-medium w-full text-center
                   ${
                     pathname === link.href
                       ? "bg-gray-800 text-white"
