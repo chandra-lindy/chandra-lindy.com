@@ -104,6 +104,7 @@ export default function BlogPostPage({ params }: PageProps) {
                   return match ? (
                     <div className="my-4 pl-8">
                       <SyntaxHighlighter
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         style={oneDark as any}
                         language={match[1]}
                         PreTag="div"
