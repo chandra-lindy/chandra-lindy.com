@@ -99,7 +99,7 @@ export default function BlogPostPage({ params }: PageProps) {
                 u: ({ children }) => (
                   <u className="underline text-gray-300">{children}</u>
                 ),
-                code({ node, className, children, ...props }) {
+                code({ className, children, ...props }) {
                   const match = /language-(\w+)/.exec(className || "");
                   return match ? (
                     <div className="my-4 pl-8">
