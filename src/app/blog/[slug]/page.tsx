@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { getPostBySlug, getAllPosts } from "@/lib/posts";
+import Image from "next/image";
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -74,12 +75,12 @@ export default async function BlogPostPage({ params }: PageProps) {
                   </p>
                 ),
                 ul: ({ children }) => (
-                  <ul className="list-disc pl-12 mb-4 text-gray-300 space-y-1">
+                  <ul className="list-disc pl-8 mb-4 text-gray-300 space-y-1">
                     {children}
                   </ul>
                 ),
                 ol: ({ children }) => (
-                  <ol className="list-decimal pl-12 mb-4 text-gray-300 space-y-1">
+                  <ol className="list-decimal pl-8 mb-4 text-gray-300 space-y-1">
                     {children}
                   </ol>
                 ),
@@ -90,6 +91,16 @@ export default async function BlogPostPage({ params }: PageProps) {
                       {children}
                     </blockquote>
                   </div>
+                ),
+                img: ({ src, alt, ...props }) => (
+                  <Image
+                    src={(src as string) || ""}
+                    alt={alt || ""}
+                    width={800}
+                    height={600}
+                    className="w-full h-auto rounded-lg my-4"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
                 ),
                 strong: ({ children }) => (
                   <strong className="font-bold text-white">{children}</strong>
@@ -103,7 +114,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 code({ className, children, ...props }) {
                   const match = /language-(\w+)/.exec(className || "");
                   return match ? (
-                    <div className="my-4 pl-8">
+                    <div className="my-4">
                       <SyntaxHighlighter
                         // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         style={oneDark as any}
