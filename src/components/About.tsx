@@ -9,7 +9,7 @@ export default function About() {
         </h2>
         <p className="px-12 text-center text-lg mb-12 text-gray-700 max-w-3xl mx-auto">
           With 15+ years in nursing, I traded scalpels for syntax and just
-          wrapped up my BS in Computer Science. Now, I'm healing wounds on the
+          wrapped up my BS in Computer Science. Now, I&apos;m healing wounds on the
           weekends, and hacking my way into tech during the week; one deploy at
           a time.
         </p>
