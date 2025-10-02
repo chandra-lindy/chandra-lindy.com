@@ -1,10 +1,10 @@
 ---
 title: Starting a Next.js Project
 date: "2025-09-30"
-description: "A step-by-step guide to creating and setting up a new Next.js project from installation to development ready."
+description: "A beginner-friendly, step-by-step tutorial on installing and configuring a new Next.js project, from setup to development-ready."
 ---
 
-![start-next-js-project-main-image.webp](/images/blog/starting-a-nextjs-project/start-next-js-project-main-image.webp)
+![starting-a-nextjs-project-main-image.webp](/images/blog/starting-a-nextjs-project/starting-a-nextjs-project-main-image.webp)
 
 #### Prerequisites
 
