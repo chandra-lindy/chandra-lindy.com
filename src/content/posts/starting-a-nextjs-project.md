@@ -1,7 +1,7 @@
 ---
 title: Starting a Next.js Project
 date: "2025-09-30"
-description: "An introduction to my personal blog."
+description: "A step-by-step guide to creating and setting up a new Next.js project from installation to development ready."
 ---
 
 ![start-next-js-project-main-image.webp](/images/blog/starting-a-nextjs-project/start-next-js-project-main-image.webp)
