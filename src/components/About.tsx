@@ -1,27 +1,30 @@
-import Card from './Card';
+import Card from "./Card";
 
 export default function About() {
   return (
-    <div className="bg-gray-100 py-16 px-8">
+    <div className="bg-gray-100 h-screen flex items-center px-8">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold text-center mb-8 text-gray-900">
-          Hey, I'm Chandra, the Nurse-Turned-Code-Wrangler
+          From Bedside to Bytecode
         </h2>
-        <p className="text-center text-lg mb-12 text-gray-700 max-w-3xl mx-auto">
-          With 15+ years healing wounds in the ER, I traded scalpels for syntax and just wrapped my BS in Computer Science. Now, I'm hacking my way into tech, one deploy at a time.
+        <p className="px-12 text-center text-lg mb-12 text-gray-700 max-w-3xl mx-auto">
+          With 15+ years in nursing, I traded scalpels for syntax and just
+          wrapped up my BS in Computer Science. Now, I'm healing wounds on the
+          weekends, and hacking my way into tech during the week; one deploy at
+          a time.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <Card
             title="Why This Blog?"
-            content="To chronicle the chaos and breakthroughs of my learning curve—because sharing the stumbles makes the wins sweeter."
+            content="To chronicle the chaos and breakthroughs of my learning curve, because sharing stumbles turns wins sweeter, and who knows? It might spark your own breakthrough or interest to collaborate."
           />
           <Card
             title="The Big Picture"
-            content="Land a Cloud DevOps gig (think Kubernetes orchestration on AWS) while bootstrapping side SaaS ideas that solve real pains. Already? I've got a Vercel-hosted prototype humming."
+            content="Land a Cloud DevOps role (Kubernetes on AWS, anyone?) while bootstrapping SaaS side hustles that tackle real-world headaches. Ideas? Endless. Execution? That's my current grind, starting with this blog."
           />
           <Card
             title="How I Roll"
-            content="Hands-on all the way—build, break, iterate. AI's my secret weapon: Grok debugs my Next.js hooks, and automation scripts handle the grunt work so I can focus on the fun."
+            content="Hands-on all the way: build, break, iterate. I embrace AI like a turbo-boost: Grok debugs my Next.js hooks, ChatGPT brainstorms wild ideas, and tools like it automate the boring bits so I can focus on the big picture."
           />
         </div>
       </div>
