@@ -1,7 +1,15 @@
+import Hero from '../components/Hero';
+import About from '../components/About';
+import FeaturedPosts from '../components/FeaturedPosts';
+import CTASection from '../components/CTASection';
+
 export default function Home() {
   return (
-    <div className="flex h-screen w-screen items-center justify-center bg-black text-white z-10">
-      <h1 className="text-6xl text-center">Under Construction</h1>
-    </div>
+    <>
+      <Hero />
+      <About />
+      <FeaturedPosts />
+      <CTASection />
+    </>
   );
 }
