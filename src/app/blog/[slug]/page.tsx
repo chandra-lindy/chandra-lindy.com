@@ -92,7 +92,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                     </blockquote>
                   </div>
                 ),
-                img: ({ src, alt, ...props }) => (
+                img: ({ src, alt }) => (
                   <Image
                     src={(src as string) || ""}
                     alt={alt || ""}
