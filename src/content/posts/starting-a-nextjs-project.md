@@ -4,7 +4,7 @@ date: "2025-09-30"
 description: "A beginner-friendly, step-by-step tutorial on installing and configuring a new Next.js project, from setup to development-ready."
 ---
 
-![starting-a-nextjs-project-main-image.webp](/images/blog/starting-a-nextjs-project/starting-a-nextjs-project-main-image.webp)
+![starting-a-nextjs-project-main-image.png](/images/blog/starting-a-nextjs-project/starting-a-nextjs-project-main-image.png)
 
 #### Prerequisites
 
