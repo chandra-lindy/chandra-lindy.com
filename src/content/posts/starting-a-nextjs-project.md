@@ -6,7 +6,13 @@ description: "A beginner-friendly, step-by-step tutorial on installing and confi
 
 ![starting-a-nextjs-project-main-image.png](/images/blog/starting-a-nextjs-project/starting-a-nextjs-project-main-image.png)
 
-#### Prerequisites
+> I've completed a couple React.js/Vite projects and I'm ready to dabble into Next.js.
+
+What better way to learn than to do?
+
+In this post, I will walk you through installing Next.js and getting it ready for development. So, by the end of this post you will have a development-ready Next.js development environment ready to go.
+
+Before we start make sure you have the following installed:
 
 - `npm`
 - `node.js`
