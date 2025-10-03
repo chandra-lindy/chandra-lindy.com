@@ -2,16 +2,16 @@ import Card from "./Card";
 
 export default function About() {
   return (
-    <div className="bg-gray-100 h-screen flex items-center px-8">
+    <div className="bg-gray-100 min-h-screen flex items-center px-8 pt-16 md:pt-0">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-8 text-gray-900">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 text-gray-900">
           From Bedside to Bytecode
         </h2>
-        <p className="px-12 text-center text-lg mb-12 text-gray-700 max-w-3xl mx-auto">
+        <p className="px-4 sm:px-8 md:px-12 text-center text-base sm:text-lg mb-12 text-gray-700 max-w-3xl mx-auto">
           With 15+ years in nursing, I traded scalpels for syntax and just
-          wrapped up my BS in Computer Science. Now, I&apos;m healing wounds on the
-          weekends, and hacking my way into tech during the week; one deploy at
-          a time.
+          wrapped up my BS in Computer Science. Now, I&apos;m healing wounds on
+          the weekends, and hacking my way into tech during the week; one deploy
+          at a time.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <Card
