@@ -1,15 +1,17 @@
 export default function CTASection() {
   return (
-    <div className="bg-black h-screen flex items-center px-8 text-white">
+    <div className="bg-black min-h-screen flex items-center px-8 py-8 text-white">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-8">Let&apos;s Connect!</h2>
-        <p className="text-lg mb-8">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8">
+          Let&apos;s Connect!
+        </h2>
+        <p className="text-base sm:text-lg mb-8">
           I&apos;m all ears; whether you&apos;re a seasoned dev dropping wisdom,
           a fellow newbie with questions, or just saying hi (or plotting a
           collab?). Hit me up on X or LinkedIn to chat code, share feedback, or
           team up on something cool.
         </p>
-        <div className="flex justify-center space-x-8">
+        <div className="flex justify-center space-x-4 sm:space-x-8">
           <a
             href="https://x.com/ChandraLindy"
             className="flex items-center px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
