@@ -4,9 +4,10 @@ import { Post } from "../lib/posts";
 
 interface PostCardProps {
   post: Post;
+  priority?: boolean;
 }
 
-export default function PostCard({ post }: PostCardProps) {
+export default function PostCard({ post, priority }: PostCardProps) {
   const imageUrl = post.image;
   const excerpt =
     post.description.length > 100
@@ -28,6 +29,7 @@ export default function PostCard({ post }: PostCardProps) {
             alt={post.title}
             fill
             className="object-cover rounded"
+            priority={priority}
           />
         </div>
         )}

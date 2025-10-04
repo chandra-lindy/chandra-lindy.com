@@ -26,6 +26,8 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
+  let isFirstImage = true;
+
   return (
     <div className="min-h-screen bg-black text-white pt-24 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -92,16 +94,21 @@ export default async function BlogPostPage({ params }: PageProps) {
                     </blockquote>
                   </div>
                 ),
-                img: ({ src, alt }) => (
-                  <Image
-                    src={(src as string) || ""}
-                    alt={alt || ""}
-                    width={800}
-                    height={600}
-                    className="w-full h-auto rounded-lg my-4"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                ),
+                img: ({ src, alt }) => {
+                  const priority = isFirstImage;
+                  isFirstImage = false;
+                  return (
+                    <Image
+                      src={(src as string) || ""}
+                      alt={alt || ""}
+                      width={800}
+                      height={600}
+                      className="w-full h-auto rounded-lg my-4"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      priority={priority}
+                    />
+                  );
+                },
                 strong: ({ children }) => (
                   <strong className="font-bold text-white">{children}</strong>
                 ),

@@ -18,7 +18,7 @@ Before we start make sure you have the following installed:
 - `node.js`
 - `git`
 
-#### Install Next.js
+## Install Next.js
 
 1. open `terminal`
 2. navigate to `project` folder
@@ -38,7 +38,7 @@ You will be prompted with a series of choices:
 - ✅ Turbopack
 - ❌ Customize import alias
 
-#### Removing boilerplate code and unused files
+## Removing boilerplate code and unused files
 
 1. Navigate into the app root folder
 2. Remove boilerplate code from the following 2 files:
@@ -67,7 +67,7 @@ You will be prompted with a series of choices:
    git commit -am "removed boilerplat code and unused icon files"
    ```
 
-#### Link existing local to a new remote github repository
+## Link existing local to a new remote github repository
 
 1. go to https://github.com
 2. Create a new repository:
@@ -87,7 +87,7 @@ On the next screen choose:
 
 Then paste the copied command on the terminal and hit enter
 
-#### Start the development server
+## Start the development server
 
 From application root folder run:
 
