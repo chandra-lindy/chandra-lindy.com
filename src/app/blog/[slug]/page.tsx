@@ -94,6 +94,11 @@ export default async function BlogPostPage({ params }: PageProps) {
                     </blockquote>
                   </div>
                 ),
+                a: ({ children, href }) => (
+                  <a href={href} className="text-blue-400 hover:text-blue-300 underline decoration-blue-400 hover:decoration-blue-300">
+                    {children}
+                  </a>
+                ),
                 img: ({ src, alt }) => {
                   const priority = isFirstImage;
                   isFirstImage = false;
