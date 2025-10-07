@@ -9,7 +9,7 @@ export default function About() {
         </h2>
         <p className="px-4 sm:px-8 md:px-12 text-center text-base sm:text-lg mb-12 text-gray-700 max-w-3xl mx-auto">
           After 15+ years in nursing, I earned my BS in Computer Science. Now,
-          I'm healing wounds on the weekends, and hacking my way into tech
+          I&apos;m healing wounds on the weekends, and hacking my way into tech
           during the week; one deploy at a time.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
