@@ -6,10 +6,10 @@ export default function CTASection() {
           Let&apos;s Connect!
         </h2>
         <p className="text-base sm:text-lg mb-8">
-          I&apos;m all ears; whether you&apos;re a seasoned dev dropping wisdom,
-          a fellow newbie with questions, or just saying hi (or plotting a
-          collab?). Hit me up on X or LinkedIn to chat code, share feedback, or
-          team up on something cool.
+          Whether you&apos;re a seasoned dev sharing tips, a fellow beginner
+          with questions, or just saying hello (or brainstorming a project
+          together), reach out. Connect on X or LinkedIn to talk code, exchange
+          ideas, or work on something together.
         </p>
         <div className="flex justify-center space-x-4 sm:space-x-8">
           <a

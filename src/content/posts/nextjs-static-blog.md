@@ -1,10 +1,10 @@
 ---
-title: Static Blog
+title: Next.js Static Blog
 date: "2025-10-02"
-description: "A step-by-step guide to building a static blog with Next.js, using dynamic routes, gray-matter, and react-markdown. The perfect first project for learning Next.js."
+description: "A step-by-step guide to building a static blog with Next.js, using dynamic routes, gray-matter, and react-markdown. The perfect first project to get your feet wet with Next.js."
 ---
 
-![static-blog-main-image.webp](/images/blog/static-blog/static-blog-main-image.png)
+![nextjs-static-blog-main-image.png](/images/blog/nextjs-static-blog/nextjs-static-blog-main-image.png)
 
 In this post, I will walk you through the process of building a static blog using Next.js' dynamic routes, `gray-matter`, and `react-markdown` packages.
 
@@ -54,9 +54,9 @@ git commit -m "installed react-markdown and gray-matter"
 
 I find it helpful to begin with the end in mind. So let's talk a bit about what we're trying to achieve here.
 
-For our simple static blog, I'd like to be able to write my blog posts in an markdown file, for example `my-first-post.md`, and place it in a designated folder, say `src/content/posts`, and the system automatically publishes the posts.
+For our simple static blog, I'd like to be able to write my blog posts in an markdown file, for example `my-first-post.md`, and place it in a designated folder, say `src/content/posts`, and have the system automatically publish a list of all posts to the URL `https://my-domain.com/blog`, and display each post to the URL `https://my-domain.com/blog/my-first-post`.
 
-If we break down this task into smaller individual tasks we get:
+Let's break this down into smaller tasks:
 
 1. create a folder where we will store our markdown files
 2. develop a helper function to curate a list of all post within this folder
@@ -66,7 +66,7 @@ If we break down this task into smaller individual tasks we get:
 6. take the list of posts and generate a static web page for each post
 7. create a route to point to each individual post
 
-This list of tasks looks daunting, but Next.js has many builtin features that does the heavy lifting on many web development tasks which makes things much easier for developers.
+This list of tasks looks daunting, but Next.js has many builtin features that does the heavy lifting on many web development tasks which makes things much easier for us.
 
 As previously mentioned, we will leverage Next.js' static site generation (SSG) feature and a couple of packages to make this process simple and straight forward.
 
@@ -112,7 +112,25 @@ Here we know exactly what we need. We need a way to retrieve a list of all posts
 
 If you know a programming language, then you can see that this is very doable, but parsing through the markdown file and creating the object doesn't sound very fun at all! /cringe
 
-`gray-matter` to the rescue!
+`gray-matter` to the rescue! It parses the front matter of a markdown file and returns an object containing the data in the front matter. The front matter is the metadata at the top of the markdown file.
+
+We just need to make sure we include the front matter in the markdown file. Here's a simple example:
+
+```md
+---
+title: My First Post
+date: 2023-01-01
+description: This is my first post
+---
+
+# My First Post
+
+This is my first post.
+```
+
+`gray-matter` will parse the front matter and return an object containing the data in the front matter.
+
+Reading through the code will make it clear how it works.
 
 Here's a simple example of my helper functions in TypeScript:
 
@@ -122,10 +140,12 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
+// define the path to the posts directory we created earlier
 const postsDirectory = path.join(process.cwd(), "src/content/posts");
 
+// define the shape of the post object
 export interface Post {
-  slug: string;
+  slug: string; // the filename of the markdown file (e.g. my-first-post)
   title: string;
   date: string;
   description: string;
@@ -140,11 +160,11 @@ export function getAllPosts(): Post[] {
       const slug = fileName.replace(/\.md$/, "");
       const fullPath = path.join(postsDirectory, fileName);
       const fileContents = fs.readFileSync(fullPath, "utf8");
-      const matterResult = matter(fileContents);
+      const matterResult = matter(fileContents); // gray-matter parses the front matter of the markdown file
 
       return {
-        slug,
-        title: matterResult.data.title,
+        slug, // this will be used by Next.js to generate the URL
+        title: matterResult.data.title, // we access the data by using the key
         date: matterResult.data.date,
         description: matterResult.data.description,
         content: matterResult.content,
@@ -190,7 +210,7 @@ We begin by creating the directories for our blog.
 mkdir src/app/blog
 
 # create the dynamic route directory
-mkdir src/app/blog/[slug]
+mkdir src/app/blog/[slug] # remember slug from our Post interface?
 ```
 
 With our new directories, we've allowed Next.js to generate the following URL structure:
@@ -238,10 +258,11 @@ Now we have everything we need to complete the rest of our tasks, starting with 
 ```tsx
 // src/app/blog/page.tsx
 import Link from "next/link";
+// we put our helper function to use
 import { getAllPosts } from "@/lib/posts";
 
 export default function BlogPage() {
-  const posts = getAllPosts();
+  const posts = getAllPosts(); // to construct the list of posts
 
   return (
     <div className="min-h-screen bg-black text-white pt-24 pb-8">
@@ -249,6 +270,7 @@ export default function BlogPage() {
         <h1 className="text-4xl font-bold mb-8">My Blog</h1>
         <div className="space-y-4">
           {posts.map((post) => (
+            // we define how we want to display the list of posts
             <div key={post.slug} className="border border-gray-700 p-4 rounded">
               <h2 className="text-2xl">
                 <Link
@@ -269,7 +291,7 @@ export default function BlogPage() {
 }
 ```
 
-We're almost done!
+And just like that, we've completed **#4 on our list**!
 
 ## Rendering Individual Posts
 
@@ -277,11 +299,13 @@ Our blog page lists a link to individual post via `href={'/blog/${post.slug}'}` 
 
 How do we achieve this? We have post objects with data presented in markdown format, but React doesn't render markdown. It renders html. Parsing the markdown and converting them into html elements is doable, but tedious!
 
-Enters `react-markdown`!
+Enters `react-markdown`! it is a markdown parser and renderer for React. It parses the markdown and converts them into html elements.
 
 We use the `react-markdown` component and pass in an object via the `components` prop that maps markdown elements to its corresponding `html` elements along with any TailwindCSS styling we choose.
 
 Here is also where we supply Next.js with the list of slugs so that it knows to generate a static page per post at build time by defining the `generateStaticParams` function returning the list of objects mapping `slug` to the string we want the URL path to be, in our case the title of the blog post.
+
+Reading the code will make it clear how it works.
 
 Here's an example taken from my blog site:
 
@@ -293,6 +317,10 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { getPostBySlug, getAllPosts } from "@/lib/posts";
 
+/**
+ * Here we define the list of slugs so Next.js knows to generate static
+ * pages for each post at build time
+ */
 export async function generateStaticParams() {
   const posts = getAllPosts();
   return posts.map((post) => ({
@@ -307,7 +335,16 @@ interface PageProps {
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
+  /**
+   * For dynamic routes, how do we know which post to render?
+   *
+   * Next.js passes the params object containing the matched route
+   * parameters which is the slug in our case, and since we're using
+   * the App router it is passed in as a Promise
+   */
   const { slug } = await params;
+
+  // we use the helper function to get the Post object
   const post = getPostBySlug(slug);
 
   if (!post) {
@@ -325,6 +362,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           </header>
           <hr className="border-gray-600 my-8" />
           <div className="max-w-none">
+            {/* We use ReactMarkdown to render the content */}
             <ReactMarkdown
               components={{
                 h1: ({ children }) => (
@@ -503,8 +541,6 @@ npm run dev
  ✓ Ready in 1640ms
 ```
 
-## Deployment
-
 I hope you've been committing incremental changes, but if you haven't, it's ok. You should do it now, and push to your remote branch
 
 ```bash
@@ -513,15 +549,17 @@ git commit -m "Simple blog feature"
 git push origin feature/blog
 ```
 
+## Note on Deployment
+
 Next.js plays really well with Vercel. If you have it setup to deploy upon push, Vercel will automatically test build the changes you've made on the branch and deploy it in parallel to your main branch as a test deploy to make sure everything is working well before merging into main.
 
-Vercel made deploying a Next.js project so easy that all you need to do is follow the instructions on the screen and you're set. This blog is published on Vercel, and it took no time to setup continuous deployment using my github repository. I highly recommend it!
+Vercel made deploying a Next.js project so easy that all you need to do is follow the instructions on the screen and you're set. This blog is published on Vercel, and it took no time to setup continuous deployment by linking it to my github repository. I highly recommend it!
 
 ## What's next?
 
 Well, now you have a functioning blog. Time to write, publish, share! At the same time, incrementally improve the appearance and add features. Add the ability to include images to your posts, or whatever else you can think of! Isn't this great!? You can make this your own and share it with the world; literally.
 
-As we use such a simplistic solution, I'm sure there will be a plethora of problems that will arise from using such a simple solution for a blog, but that means we get to solve as we encounter them, instead of implementing something complicated trying to solve a problem that does not yet exists.
+Because we used such a simplistic solution, I'm sure there will be a plethora of problems that will arise as we continue to use it, but that means we get to solve the problems as we encounter them, instead of implementing something overly complicated trying to solve problems that do not yet exist.
 
 And when the need for a more sophisticated solution does arise, you know what that means? We get to start a new project! 😃
 
