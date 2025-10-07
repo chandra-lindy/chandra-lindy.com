@@ -42,37 +42,37 @@ export default async function BlogPostPage({ params }: PageProps) {
             <ReactMarkdown
               components={{
                 h1: ({ children }) => (
-                  <h1 className="text-4xl font-bold mb-4 text-white">
+                  <h1 className="text-4xl font-bold mt-16 mb-8 text-white">
                     {children}
                   </h1>
                 ),
                 h2: ({ children }) => (
-                  <h2 className="text-3xl font-semibold mb-3 text-white">
+                  <h2 className="text-3xl font-semibold mt-16 mb-8 text-white">
                     {children}
                   </h2>
                 ),
                 h3: ({ children }) => (
-                  <h3 className="text-2xl font-medium mb-2 text-white">
+                  <h3 className="text-2xl font-medium mt-16 mb-8 text-white">
                     {children}
                   </h3>
                 ),
                 h4: ({ children }) => (
-                  <h4 className="text-xl font-medium mb-2 text-white">
+                  <h4 className="text-xl font-medium mt-16 mb-8 text-white">
                     {children}
                   </h4>
                 ),
                 h5: ({ children }) => (
-                  <h5 className="text-lg font-medium mb-2 text-white">
+                  <h5 className="text-lg font-medium mt-16 mb-8 text-white">
                     {children}
                   </h5>
                 ),
                 h6: ({ children }) => (
-                  <h6 className="text-base font-medium mb-2 text-white">
+                  <h6 className="text-base font-medium mt-16 mb-8 text-white">
                     {children}
                   </h6>
                 ),
                 p: ({ children }) => (
-                  <p className="mb-4 text-gray-300 leading-relaxed">
+                  <p className="mb-4 text-gray-300 my-4 leading-relaxed">
                     {children}
                   </p>
                 ),
@@ -93,6 +93,14 @@ export default async function BlogPostPage({ params }: PageProps) {
                       {children}
                     </blockquote>
                   </div>
+                ),
+                a: ({ children, href }) => (
+                  <a
+                    href={href}
+                    className="text-blue-400 hover:text-blue-300 underline decoration-blue-400 hover:decoration-blue-300"
+                  >
+                    {children}
+                  </a>
                 ),
                 img: ({ src, alt }) => {
                   const priority = isFirstImage;
