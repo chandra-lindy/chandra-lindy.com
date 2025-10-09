@@ -1,12 +1,12 @@
 ---
 title: Git Workflow (Solo)
 date: "2025-10-08"
-description: ""
+description: "A practical, step-by-step guide to mastering Git workflows for solo developers, from branching and committing to handling interruptions and merging. Essential tips for efficient version control and clean project management."
 ---
 
 ![git-workflow-solo-main-image.png](/images/blog/git-workflow-solo/git-workflow-solo-main-image.png)
 
-In this post I will share with you the git workflow I use when developing this blog. By the end of this post you will have just enough practical know how to get started on your own solo projects, so that you can start making your own mistakes to learn from.
+In this post I will share with you the git workflow I use when developing this blog. By the end of this post you will have just enough practical know-how to get started on your own solo projects, so that you can start making your own mistakes to learn from.
 
 ## The Workflow
 
@@ -20,13 +20,13 @@ In this post I will share with you the git workflow I use when developing this b
 
 ## The Process
 
-Whenever I need to make a change to the codebase, for whatever reason, be it a new feature, to refactor, to fix a bug or add content, I follow the following steps:
+Whenever I need to make a change to the codebase, for whatever reason, whether it's a new feature, refactoring, fixing a bug, or adding content, I follow the following steps:
 
 1. Break down the task into smaller tasks and subtasks.
 2. Create a new branch and start working crossing off the list one by one.
 3. When a list item is complete, commit the changes.
 4. When the entire list is complete, push the branch, test, and merge via a pull request.
-5. Delete the both local and remote temporary branch
+5. Delete both the local and remote temporary branches
 6. Pull from main to synchronize the local repository.
 
 Let's break it down with an example.
@@ -46,7 +46,7 @@ git checkout -b feature/blog
 
 Now we're ready to begin working on the feature, crossing off the list of tasks one by one.
 
-_Tip: Only make changes related to the current branch. RESIST THE URGE! Check Bonus section below for ways to achieve this._
+_Tip: Only make changes related to the current branch. **Resist the urge!** Check Bonus section below for ways to achieve this._
 
 Once a list item is complete, commit the changes.
 
@@ -76,7 +76,7 @@ git pull
 git branch -D feature/add-categories
 ```
 
-You might be asking "Why go through the trouble of pushing the branch to remote?". Well, I do it because my blog is published to Vercel, and pushing remote branches to remote triggers a staging deployment. I can then test the changes on the staging deployment before merging into main.
+You might be asking "Why go through the trouble of pushing the branch to remote?". Well, I do it because my blog is published to Vercel, and pushing branches to remote triggers a staging deployment. I can then test the changes on the staging deployment before merging into main.
 
 An additional minor benefit is that pushing to remote creates a backup of the branch in case you lose your local copy for whatever reason (coffee spillage, stolen laptop, etc.).
 
@@ -104,17 +104,17 @@ Here are some scenarios I've personally encountered and the Git commands that I 
 
 ### Interruptions
 
-Often times you will be interupted mid-development on a temporary branch, and you feel compelled to make progress on a separate task.
+Often times you will be interrupted mid-development on a temporary branch, and you feel compelled to make progress on a separate task.
 
 The way I see it, there are two types of interruptions. The convenient type and the not-so-convenient type.
 
 #### The Convenient Type
 
-This is when you are convenienty interrupted between commits. You don't have any untracked files, or uncommitted changes. When you run `git status` you see a clean slate.
+This is when you are conveniently interrupted between commits. You don't have any untracked files, or uncommitted changes. When you run `git status` you see a clean slate.
 
-In this case, you can simply switch to the main branch and begin the five-step process to make the changes.
+In this case, you can simply switch to the main branch and begin the six-step process to make the changes.
 
-So, you follow the five-step process above, and you are back on main. An updated main. One that has your most recent changes. But, the temporary branch you were working on was branched off of an older version of main; different base. If you try to merge without updating your branch to the latest version of main, you will get a lot of merge conflicts. Every change you made during your little sidetrack progress in the code base will be a merge conflict. It's not fun.
+So, you follow the six-step process above, and you are back on main. An updated main. One that has your most recent changes. But, the temporary branch you were working on was branched off of an older version of main; different base. If you try to merge without updating your branch to the latest version of main, you will get a lot of merge conflicts. Every change you made during your little sidetrack progress in the code base will be a merge conflict. It's not fun.
 
 To prevent this, right before you start a pull request, update the temporary branch to the latest version of main.
 
@@ -146,7 +146,7 @@ git checkout feature/add-categories
 git stash pop
 ```
 
-And, you're back to your previous branch will all your changes intact just as you left them. From here you continue working on the temporary branch as if nothing happened. And, don't forget to `fetch` and `merge` to keep main updated if changes were merged into main while you were away.
+And, you're back to your previous branch with all your changes intact just as you left them. From here you continue working on the temporary branch as if nothing happened. And, don't forget to `fetch` and `merge` to keep main updated if changes were merged into main while you were away.
 
 This is a great tool to use to help you adhere to the principle of "Only make changes related to the current branch." Often times you will get stuck on a branch and it would be more productive to make progress on a different branch before returning to it at a later time.
 
@@ -192,13 +192,13 @@ With what we know so far, we can construct some rules to follow to help us adher
    ```bash
    git checkout main
    git pull
-   git branch -d branch-name
+   git branch -D branch-name
    git push origin --delete branch-name
    ```
 
 ## Closing Remarks
 
-You now have enough practical know how to get started on your own solo projects. Give it a try. Take it out for a test drive.
+You now have enough practical know-how to get started on your own solo projects. Give it a try. Take it out for a test drive.
 
 Build. Break. Learn.
 
