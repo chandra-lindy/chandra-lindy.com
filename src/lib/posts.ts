@@ -100,6 +100,12 @@ export function getAllPosts(): Post[] {
   return allPostsData;
 }
 
+export function getPostsBySlugs(slugs: string[]): Post[] {
+  const allPosts = getAllPosts();
+  const postsMap = new Map(allPosts.map(post => [post.slug, post]));
+  return slugs.map(slug => postsMap.get(slug)).filter((post): post is Post => post !== undefined);
+}
+
 export function getPostBySlug(slug: string): Post | null {
   try {
     const fullPath = path.join(postsDirectory, `${slug}.md`);
