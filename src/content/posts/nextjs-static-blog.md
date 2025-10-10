@@ -4,8 +4,6 @@ date: "2025-10-02"
 description: "A step-by-step guide to building a static blog with Next.js, using dynamic routes, gray-matter, and react-markdown. The perfect first project to get your feet wet with Next.js."
 ---
 
-![nextjs-static-blog-main-image.png](/images/blog/nextjs-static-blog/nextjs-static-blog-main-image.png)
-
 In this post, I will walk you through the process of building a static blog using Next.js' dynamic routes, `gray-matter`, and `react-markdown` packages.
 
 By the end of this project you will have gained:

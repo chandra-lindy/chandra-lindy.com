@@ -4,8 +4,6 @@ date: "2025-09-30"
 description: "A beginner-friendly, step-by-step tutorial on installing and configuring a new Next.js project, from setup to development-ready."
 ---
 
-![starting-a-nextjs-project-main-image.png](/images/blog/starting-a-nextjs-project/starting-a-nextjs-project-main-image.png)
-
 > I've completed a couple React.js/Vite projects and I'm ready to dabble into Next.js.
 
 What better way to learn than to do?

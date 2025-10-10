@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
+import PostCard from "@/components/PostCard";
 
 export default function BlogPage() {
   const posts = getAllPosts();
@@ -7,21 +7,9 @@ export default function BlogPage() {
   return (
     <div className="min-h-screen bg-black text-white pt-24 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl font-bold mb-8">My Blog</h1>
-        <div className="space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {posts.map((post) => (
-            <div key={post.slug} className="border border-gray-700 p-4 rounded">
-              <h2 className="text-2xl">
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="text-blue-400 hover:underline"
-                >
-                  {post.title}
-                </Link>
-              </h2>
-              <p className="text-gray-400">{post.date}</p>
-              <p>{post.description}</p>
-            </div>
+            <PostCard key={post.slug} post={post} />
           ))}
         </div>
       </div>

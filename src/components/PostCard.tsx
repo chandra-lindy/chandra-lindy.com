@@ -24,7 +24,7 @@ export default function PostCard({ post, priority, theme = "dark" }: PostCardPro
     <Link href={`/blog/${post.slug}`} className="block">
       <div className={`${styles.container} p-4 rounded-lg shadow-md transition ${styles.hover}`}>
         {imageUrl && (
-        <div className="relative w-full h-48 mb-4">
+        <div className="relative w-full h-40 mb-4">
           <Image
             src={imageUrl}
             alt={post.title}

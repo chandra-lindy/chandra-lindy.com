@@ -4,8 +4,6 @@ date: "2025-09-30"
 description: "A practical, step-by-step guide to mastering Git workflows for solo developers, from branching and committing to handling interruptions and merging. Essential tips for efficient version control and clean project management."
 ---
 
-![git-workflow-solo-main-image.png](/images/blog/git-workflow-solo/git-workflow-solo-main-image.png)
-
 In this post I will share with you the git workflow I use when developing this blog. By the end of this post you will have just enough practical know-how to get started on your own solo projects, so that you can start making your own mistakes to learn from.
 
 _**Note:**_ The example I use in this post is specific to a web development project published to Vercel, because this is where I gained the experience, but the workflow is applicable to any type of project.
