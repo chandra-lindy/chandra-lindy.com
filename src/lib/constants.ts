@@ -66,3 +66,12 @@ export const ERROR_MESSAGES = {
   loading: "Loading...",
   genericError: "Something went wrong. Please try again.",
 } as const;
+
+// Layout spacing constants
+export const SPACING = {
+  section: {
+    mobile: "pt-16 pb-8 px-8", // Account for fixed nav (h-16)
+    desktop: "py-8 px-8",      // Normal spacing on larger screens
+    combined: "pt-16 md:pt-8 pb-8 px-8" // Responsive combination
+  }
+} as const;

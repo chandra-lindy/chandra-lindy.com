@@ -1,8 +1,9 @@
 import Card from "./Card";
+import { SPACING } from "../lib/constants";
 
 export default function About() {
   return (
-    <div className="bg-gray-100 min-h-screen flex items-center px-8 pt-16 md:pt-0">
+    <div className={`bg-gray-100 min-h-screen flex items-center ${SPACING.section.combined}`}>
       <div className="max-w-6xl mx-auto">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 text-gray-900">
           From Bedside to Bytecode
