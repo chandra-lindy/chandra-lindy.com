@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { SOCIAL_LINKS } from "@/lib/constants";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -12,7 +13,7 @@ export default function Footer() {
           <div className="mb-0">© {currentYear} Chandra Lindy</div>
           <div className="flex space-x-4">
             <Link
-              href="https://linkedin.com/in/chandra-lindy"
+              href={SOCIAL_LINKS.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white transition-colors duration-200"
@@ -20,7 +21,7 @@ export default function Footer() {
               LinkedIn
             </Link>
             <Link
-              href="https://x.com/ChandraLindy"
+              href={SOCIAL_LINKS.twitter}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white transition-colors duration-200"
@@ -28,7 +29,7 @@ export default function Footer() {
               X
             </Link>
             <Link
-              href="https://github.com/chandra-lindy"
+              href={SOCIAL_LINKS.github}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white transition-colors duration-200"

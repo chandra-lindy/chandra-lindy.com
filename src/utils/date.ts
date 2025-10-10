@@ -17,7 +17,9 @@ export function formatDate(
   }
 ): string {
   try {
-    return new Date(dateString).toLocaleDateString("en-US", options);
+    // Append T12:00:00 to avoid timezone shift issues with date-only strings
+    const date = new Date(dateString + 'T12:00:00');
+    return date.toLocaleDateString("en-US", options);
   } catch (error) {
     console.warn(`Invalid date string: ${dateString}`, error);
     return dateString; // Return original string if parsing fails
@@ -31,7 +33,8 @@ export function formatDate(
  */
 export function formatRelativeTime(dateString: string): string {
   try {
-    const date = new Date(dateString);
+    // Append T12:00:00 to avoid timezone shift issues
+    const date = new Date(dateString + 'T12:00:00');
     const now = new Date();
     const diffInMs = now.getTime() - date.getTime();
     const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));

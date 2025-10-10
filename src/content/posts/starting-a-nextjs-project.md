@@ -1,6 +1,6 @@
 ---
 title: Starting a Next.js Project
-date: "2025-09-30"
+date: "2025-09-29"
 description: "A beginner-friendly, step-by-step tutorial on installing and configuring a new Next.js project, from setup to development-ready."
 ---
 

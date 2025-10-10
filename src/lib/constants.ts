@@ -5,9 +5,9 @@
 // Site configuration
 export const SITE_CONFIG = {
   name: "Chandra Lindy",
-  url: "https://chandralindy.me",
+  url: "https://chandra-lindy.com",
   description: "Chandra Lindy's personal website",
-  ogImage: "/og-image.png", // Add this when you have one
+  ogImage: "/og-image.png",
 } as const;
 
 // Navigation links
@@ -19,9 +19,16 @@ export const NAV_LINKS = [
 // Social media links (for footer/CTA sections)
 export const SOCIAL_LINKS = {
   twitter: "https://x.com/ChandraLindy",
-  linkedin: "https://linkedin.com/in/chandralindy", // Add when available
-  github: "https://github.com/chandralindy", // Add when available
+  linkedin: "https://linkedin.com/in/chandra-lindy",
+  github: "https://github.com/chandra-lindy",
 } as const;
+
+// Featured posts (by slug)
+export const FEATURED_POSTS = [
+  "starting-a-nextjs-project",
+  "git-workflow-solo",
+  "nextjs-static-blog",
+] as const;
 
 // Theme configurations
 export const THEME_CLASSES = {
@@ -30,15 +37,15 @@ export const THEME_CLASSES = {
     title: "text-gray-900",
     excerpt: "text-gray-700",
     date: "text-gray-500",
-    hover: "hover:shadow-lg"
+    hover: "hover:shadow-lg",
   },
   dark: {
     container: "bg-gray-800",
     title: "text-white",
     excerpt: "text-gray-300",
     date: "text-gray-400",
-    hover: "hover:bg-gray-700"
-  }
+    hover: "hover:bg-gray-700",
+  },
 } as const;
 
 // Content limits
@@ -71,7 +78,7 @@ export const ERROR_MESSAGES = {
 export const SPACING = {
   section: {
     mobile: "pt-16 pb-8 px-8", // Account for fixed nav (h-16)
-    desktop: "py-8 px-8",      // Normal spacing on larger screens
-    combined: "pt-16 md:pt-8 pb-8 px-8" // Responsive combination
-  }
+    desktop: "py-8 px-8", // Normal spacing on larger screens
+    combined: "pt-16 md:pt-8 pb-8 px-8", // Responsive combination
+  },
 } as const;
