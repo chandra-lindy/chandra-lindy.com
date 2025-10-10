@@ -4,12 +4,49 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { getPostBySlug, getAllPosts } from "@/lib/posts";
 import Image from "next/image";
+import type { Metadata } from "next";
+import { SITE_CONFIG, ERROR_MESSAGES } from "@/lib/constants";
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
   return posts.map((post) => ({
     slug: post.slug,
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
+
+  if (!post) {
+    return {
+      title: ERROR_MESSAGES.postNotFound,
+    };
+  }
+
+  const postUrl = `${SITE_CONFIG.url}/blog/${slug}`;
+
+  return {
+    title: post.title,
+    description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      url: postUrl,
+      type: "article",
+      images: post.image
+        ? [{ url: `${SITE_CONFIG.url}${post.image}`, alt: post.title }]
+        : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: post.image ? [`${SITE_CONFIG.url}${post.image}`] : [],
+    },
+  };
 }
 
 interface PageProps {

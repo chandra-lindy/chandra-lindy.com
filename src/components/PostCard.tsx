@@ -1,27 +1,28 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Post } from "../lib/posts";
+import { formatDate } from "../utils/date";
+import { THEME_CLASSES, CONTENT_LIMITS } from "../lib/constants";
 
 interface PostCardProps {
   post: Post;
   priority?: boolean;
+  theme?: "light" | "dark";
 }
 
-export default function PostCard({ post, priority }: PostCardProps) {
+export default function PostCard({ post, priority, theme = "dark" }: PostCardProps) {
   const imageUrl = post.image;
   const excerpt =
-    post.description.length > 100
-      ? post.description.substring(0, 100) + "..."
+    post.description.length > CONTENT_LIMITS.postExcerpt
+      ? post.description.substring(0, CONTENT_LIMITS.postExcerpt) + "..."
       : post.description;
-  const formattedDate = new Date(post.date).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  const formattedDate = formatDate(post.date);
+
+  const styles = THEME_CLASSES[theme];
 
   return (
     <Link href={`/blog/${post.slug}`} className="block">
-      <div className="bg-gray-100 p-4 rounded-lg shadow-md hover:shadow-lg transition">
+      <div className={`${styles.container} p-4 rounded-lg shadow-md transition ${styles.hover}`}>
         {imageUrl && (
         <div className="relative w-full h-48 mb-4">
           <Image
@@ -33,9 +34,9 @@ export default function PostCard({ post, priority }: PostCardProps) {
           />
         </div>
         )}
-        <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
-        <p className="text-gray-700 text-sm mb-2">{excerpt}</p>
-        <p className="text-gray-500 text-xs">{formattedDate}</p>
+        <h3 className={`text-xl font-semibold mb-2 ${styles.title}`}>{post.title}</h3>
+        <p className={`text-sm mb-2 ${styles.excerpt}`}>{excerpt}</p>
+        <p className={`text-xs ${styles.date}`}>{formattedDate}</p>
       </div>
     </Link>
   );

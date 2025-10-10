@@ -3,6 +3,7 @@ import { Inconsolata, Merriweather_Sans } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 const inconsolata = Inconsolata({
   variable: "--font-inconsolata",
@@ -31,9 +32,11 @@ export default function RootLayout({
       <body
         className={`${inconsolata.variable} ${merriweatherSans.variable} antialiased flex flex-col min-h-screen`}
       >
-        <Navigation />
-        <main className="flex-grow">{children}</main>
-        <Footer />
+        <ErrorBoundary>
+          <Navigation />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+        </ErrorBoundary>
       </body>
     </html>
   );
