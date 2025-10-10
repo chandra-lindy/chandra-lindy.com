@@ -1,8 +1,9 @@
 import { getAllPosts } from "../lib/posts";
 import PostCard from "./PostCard";
+import { CONTENT_LIMITS } from "../lib/constants";
 
 export default function FeaturedPosts() {
-  const posts = getAllPosts().slice(0, 4); // Display up to 4 featured posts
+  const posts = getAllPosts().slice(0, CONTENT_LIMITS.featuredPosts); // Display up to featured posts
 
   return (
     <div className="bg-gray-900 min-h-screen flex items-center px-8">

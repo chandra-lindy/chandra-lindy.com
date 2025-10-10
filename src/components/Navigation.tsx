@@ -3,16 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-type NavLink = {
-  name: string;
-  href: string;
-};
-
-const navLinks: NavLink[] = [
-  { name: "Home", href: "/" },
-  { name: "Blog", href: "/blog" },
-];
+import { NAV_LINKS } from "../lib/constants";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -49,7 +40,7 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-16">
           {/* Logo/Brand */}
           <div className="flex-shrink-0">
-            <Link href="/" className="font-mono font-bold text-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black rounded">
+            <Link href="/" className="font-mono font-bold text-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded">
               Chandra Lindy
             </Link>
           </div>
@@ -57,11 +48,11 @@ export default function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
-              {navLinks.map((link) => (
+              {NAV_LINKS.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black
                     ${
                       pathname === link.href
                         ? "bg-gray-800 text-white"
@@ -78,7 +69,7 @@ export default function Navigation() {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white transition-colors duration-200"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white transition-colors duration-200"
               aria-expanded={isMenuOpen}
               aria-controls="mobile-menu"
               aria-label={isMenuOpen ? "Close main menu" : "Open main menu"}
@@ -133,11 +124,11 @@ export default function Navigation() {
           aria-orientation="vertical"
         >
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col bg-black border-t border-gray-700">
-            {navLinks.map((link) => (
+            {NAV_LINKS.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className={`block px-3 py-2 rounded-md text-base font-medium w-full text-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black transition-colors duration-200
+                className={`block px-3 py-2 rounded-md text-base font-medium w-full text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black transition-colors duration-200
                   ${
                     pathname === link.href
                       ? "bg-gray-800 text-white"

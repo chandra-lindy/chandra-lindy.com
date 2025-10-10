@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Post } from "../lib/posts";
+import { formatDate } from "../utils/date";
+import { THEME_CLASSES, CONTENT_LIMITS } from "../lib/constants";
 
 interface PostCardProps {
   post: Post;
@@ -11,33 +13,12 @@ interface PostCardProps {
 export default function PostCard({ post, priority, theme = "dark" }: PostCardProps) {
   const imageUrl = post.image;
   const excerpt =
-    post.description.length > 100
-      ? post.description.substring(0, 100) + "..."
+    post.description.length > CONTENT_LIMITS.postExcerpt
+      ? post.description.substring(0, CONTENT_LIMITS.postExcerpt) + "..."
       : post.description;
-  const formattedDate = new Date(post.date).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  const formattedDate = formatDate(post.date);
 
-  const themeClasses = {
-    light: {
-      container: "bg-gray-100",
-      title: "text-gray-900",
-      excerpt: "text-gray-700",
-      date: "text-gray-500",
-      hover: "hover:shadow-lg"
-    },
-    dark: {
-      container: "bg-gray-800",
-      title: "text-white",
-      excerpt: "text-gray-300",
-      date: "text-gray-400",
-      hover: "hover:bg-gray-700"
-    }
-  };
-
-  const styles = themeClasses[theme];
+  const styles = THEME_CLASSES[theme];
 
   return (
     <Link href={`/blog/${post.slug}`} className="block">

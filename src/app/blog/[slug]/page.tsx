@@ -5,6 +5,7 @@ import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { getPostBySlug, getAllPosts } from "@/lib/posts";
 import Image from "next/image";
 import type { Metadata } from "next";
+import { SITE_CONFIG, ERROR_MESSAGES } from "@/lib/constants";
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -21,12 +22,11 @@ export async function generateMetadata({
 
   if (!post) {
     return {
-      title: "Post not found",
+      title: ERROR_MESSAGES.postNotFound,
     };
   }
 
-  const baseUrl = "https://chandralindy.me";
-  const postUrl = `${baseUrl}/blog/${slug}`;
+  const postUrl = `${SITE_CONFIG.url}/blog/${slug}`;
 
   return {
     title: post.title,
@@ -37,14 +37,14 @@ export async function generateMetadata({
       url: postUrl,
       type: "article",
       images: post.image
-        ? [{ url: `${baseUrl}${post.image}`, alt: post.title }]
+        ? [{ url: `${SITE_CONFIG.url}${post.image}`, alt: post.title }]
         : [],
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.description,
-      images: post.image ? [`${baseUrl}${post.image}`] : [],
+      images: post.image ? [`${SITE_CONFIG.url}${post.image}`] : [],
     },
   };
 }
