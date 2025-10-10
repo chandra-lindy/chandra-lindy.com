@@ -1,6 +1,8 @@
+import { SPACING } from "../lib/constants";
+
 export default function CTASection() {
   return (
-    <div className="bg-black min-h-screen flex items-center px-8 py-8 text-white">
+    <div className={`bg-black min-h-screen flex items-center text-white ${SPACING.section.combined}`}>
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8">
           Let&apos;s Connect!

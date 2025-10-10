@@ -1,8 +1,9 @@
 import Link from "next/link";
+import { SPACING } from "../lib/constants";
 
 export default function Hero() {
   return (
-    <div className="flex items-center justify-center bg-black text-white min-h-screen px-8 py-8">
+    <div className={`flex items-center justify-center bg-black text-white min-h-screen ${SPACING.section.combined}`}>
       <div className="text-center">
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-8 leading-relaxed">
           Code, Commit, Conquer:<br />
